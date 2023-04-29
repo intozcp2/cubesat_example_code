@@ -1,0 +1,33 @@
+
+#include <Servo.h>
+
+Servo myservo;
+
+int servoPin = 9;
+
+int angle;
+
+void setup() {
+  Serial.begin(9600);
+  myservo.attach(9);
+}
+
+
+void loop() {
+  int value0 = analogRead(A0);
+  int value1 = analogRead(A1);
+
+  Serial.print(value0);
+  Serial.print(",");
+  Serial.print(value1);
+  int value_diff = value0 -value1;
+  int range = 100;
+  if (value_diff > range){
+    myservo.write(angle++);
+    }
+    else if (value_diff < range){
+    myservo.write(angle--);
+    } else {
+      }
+        
+}
